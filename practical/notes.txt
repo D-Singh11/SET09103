@@ -1,0 +1,42 @@
+to check the version of flas use : python -c "import flask"
+
+we can create virtual environments with the assistanve of virtualenv called virtual environment. It will allow us to craete as many as virtualenvironments
+within which we can install whatever packages we want.
+-	Pacakegs installed inside the virtual environments are local to that environment and can not be accessed from outside it.
+- 	It is useful if we want to run different versions of a package for different projects.
+
+Always create difrernt virual environments to run differet versions of the same package :
+
+
+to install virtual environment do :  sudo apt install virtualenv
+
+to create virtual environment do : 	virtualenv "name of the environemnt it can be anything" e.g virtualenv  test
+
+to activate virtual environment do : source python-enbv/test/activate
+
+to install packages in the environment do : pip nam eof the package e.g pip flask
+
+to check versin of flask or packaage : pip freeze
+
+to deactivate virtual environment do : deactivate
+
+to create something similar to package.json
+
+always create a copy of all the packages installed in the virtual environment by doing pipo freeze > name of the file
+
+then to install all those packages on othe machine do its same as npm run install : pip install -r name of the file
+
+
+Best practise : create a folder 
+	> create virtual envrionemnt 
+	> create src folder for the source code 
+	> create test folder for the test
+	> cfreate docd folder for documents
+	> install required packages
+	> create a requirements file buy doing pip freeze
+ ******* only push requirements file and source code to the github because user can install all the packages using that file.
+
+
+
+
+
