@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template, abort, request
+from flask import Flask, redirect, url_for, render_template, abort
 app = Flask(__name__)
 
 @app.route('/')
@@ -43,22 +43,3 @@ def static_example_img():
     end = '">'
     return start+url+end, 200
 
-## week 4
-
-@app.route("/account", methods=['GET', 'POST'])
-def account():
-    if request.method =='POST':
-        print request.form
-        name = request.form["name"]
-        return "Hello " + name + "\n posted"
-    else:
-        print "get called"
-        return render_template('form.html', title='new form')
-
-@app.route("/who/<name>")
-def who(name):
-    return "Hello %s" % name
-
-@app.route("/sum/<int:first>/<int:second>")
-def numbers(first,second):
-    return "Sum of numbers is : " + str(first+second)
