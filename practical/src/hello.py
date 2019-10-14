@@ -55,10 +55,52 @@ def account():
         print "get called"
         return render_template('form.html', title='new form')
 
+
+
 @app.route("/who/<name>")
 def who(name):
     return "Hello %s" % name
 
+
+
 @app.route("/sum/<int:first>/<int:second>")
 def numbers(first,second):
     return "Sum of numbers is : " + str(first+second)
+
+
+
+@app.route("/update")
+def update():
+    parameter = request.args.get("name","")    # if no parameter passed in URL then second argument of get message is used
+    if parameter == "":
+        return "Error : no parameter supplied in the URL"
+    else:
+        return "Hello %s" %parameter
+
+
+@app.route("/upload", methods=['POST','GET'])
+def uploadFile():
+    if request.method =='POST':
+        file = request.files['datafile']
+        file.save('src/static/uploads/file.png')
+        return 'file uploaded'
+    else:
+        page = '''
+        <html>
+        <boby>
+        <form action="" method="post" name="form" enctype="multipart/form-data">
+            <input type="file" name="datafile" />
+            <input type="submit" name="submit" id="submit" />
+        </form>
+        </body>
+        </html>
+        '''
+        return page,200
+
+
+@app.route("/display")
+def displayUploaded():
+    return '<img src="' + url_for('static', filename='uploads/file.png') +'"/>'
+
+# app.run(host='0.0.0.0', debug=True)
+
